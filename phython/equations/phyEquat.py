@@ -1,22 +1,33 @@
 import math
 
-def calcAcc(projectile, enviroment):
+def calcAcc(proj, env):
     if env.isFrFall:
-        proj1.acc = env.grav
+        return env.grav
     else:
-        proj1.acc = proj1.force / proj1.mass
+        return proj.force / proj.mass
 
-def calcKE(arg):
-    pass
+def calcKE(proj, env):
+    proj.ke = env.sysEng - proj.pe
+    return proj.ke
 
-def calcPE(arg):
-    pass
+def calcPE(proj, env):
+    proj.pe = proj.pos * proj.mass * env.grav
+    return proj.pe
 
-def calcBounceHt(arg):
-    bounceHt = proj1.pos * env.restCoef
+def setEngOfSys(proj, env):
+    env.sysEng = calcPE(proj)
+
+def calcBounceHt(proj, env):
+    bounceHt = proj.pos * env.restCoef
+    return bounceHt
 
 def calcDrop(arg):
     pass
 
-def calcTimeOfImpact(arg):
-    timeOfImpact = math.sqrt((2*proj1.pos)/proj1.acc)
+def calcTimeOfImpact(proj):
+    timeOfImpact = math.sqrt((2*proj.pos)/proj.acc)
+    return timeOfImpact
+
+def updatePos(arg):
+    newPos = calcBounceHt(arg)
+    return newPos
