@@ -31,3 +31,6 @@ def calcTimeOfImpact(proj):
 def updatePos(arg):
     newPos = calcBounceHt(arg)
     return newPos
+
+def updateData(proj, env):
+    pass
